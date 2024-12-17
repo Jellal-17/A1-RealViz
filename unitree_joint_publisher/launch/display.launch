@@ -1,0 +1,13 @@
+<launch>
+  <!-- Publish the robot description parameter -->
+  <param name="robot_description" command="$(find xacro)/xacro $(find unitree_joint_publisher)/a1_description/urdf/a1.urdf"/>
+
+  <!-- Start joint state publisher (if needed) -->
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+
+  <!-- Start TF -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+  
+  <!-- Start RViz -->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find unitree_joint_publisher)/rviz/a1.rviz" />
+</launch>
